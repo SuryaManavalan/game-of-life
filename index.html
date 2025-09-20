@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game of Life — Neo Terminal</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="shell">
+    <div class="titlebar">
+      <div class="brand">
+        <span class="dot"></span>
+        <h1>SYC-LIFE VERGENCE HUD • Game of Life</h1>
+      </div>
+      <div class="meta" id="metaLine">
+        <span>Grid <b id="metaGrid">50×50</b></span>
+        <span>Speed <b id="metaSpeed">10 Hz</b></span>
+        <span>Engine <b>Conway</b></span>
+        <span>Theme <b>Dark Neo</b></span>
+      </div>
+    </div>
+
+    <div class="layout">
+      <!-- LEFT: HUD -->
+      <aside class="panel hud">
+        <h2>Live Model Stats</h2>
+        <div class="kv">
+          <div class="k">Generation</div>
+          <div class="v" id="genOut">0</div>
+          <div class="k">Alive Cells</div>
+          <div class="v" id="aliveOut">0</div>
+          <div class="k">Organisms</div>
+          <div class="v" id="orgOut">0</div>
+          <div class="k">Density</div>
+          <div class="v" id="densityOut">0.00</div>
+          <div class="k">FPS</div>
+          <div class="v" id="fpsOut">0.0</div>
+        </div>
+
+        <div class="section">
+          <div class="row">
+            <span>Alive %</span>
+            <span class="badge" id="runBadge"><span class="led"></span><b id="runText">Idle</b></span>
+          </div>
+          <div class="bar bar--cyan" title="Alive %">
+            <span id="aliveBar" style="width:0%"></span>
+          </div>
+
+          <div class="row" style="margin-top:12px">
+            <span>Tick Interval</span>
+            <b id="tickOut" style="color:var(--accent-2)">100 ms</b>
+          </div>
+          <div class="bar bar--amber" title="Speed vs 60 FPS">
+            <span id="speedBar" style="width:16%"></span>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="row"><span>Stability</span><b id="stabilityOut">—</b></div>
+          <div class="row"><span>Change / tick</span><b id="deltaOut">0</b></div>
+        </div>
+      </aside>
+
+      <!-- RIGHT: CONTROLS + BOARD -->
+      <section class="panel board">
+        <div class="controls">
+          <button id="startStopBtn">Start</button>
+          <button class="secondary" id="clearBtn">Clear</button>
+          <button class="secondary" id="randomBtn">Random</button>
+          <div class="chips">
+            <span class="chip"><span class="sw alive"></span> alive</span>
+            <span class="chip"><span class="sw dead"></span> dead</span>
+          </div>
+        </div>
+        <div class="gridwrap">
+          <div class="grid" id="grid" style="--n:50"></div>
+        </div>
+        <div id="patternOverlay" class="overlay hidden">
+          <div class="overlay-header">
+            <span class="dot"></span>
+            <strong>Detected Patterns</strong>
+          </div>
+          <div id="patternList" class="overlay-list"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
